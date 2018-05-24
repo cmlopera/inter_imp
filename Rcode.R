@@ -27,7 +27,7 @@ if(!require(interval)){
 
 # carga las funciones para la simulación
 # sfS
-source("funciones_v5.R")
+source("FUN.R")
 
 ######### inicio de parámetros de simulación #######
 # tamaño de muestra
