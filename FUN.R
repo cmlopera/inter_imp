@@ -1,6 +1,6 @@
 # Funciones
 
-# Generaci?n de datos para la simulaci?n
+# Generación de datos para la simulación
 gendata<-function(s,n=100,v=6,len=0.25,asist=T){
   # Probabilidades de asistencia
   if(asist){
@@ -15,7 +15,7 @@ gendata<-function(s,n=100,v=6,len=0.25,asist=T){
   # variables auxiliares
   X1<-runif(n,0,1)
   X2<-runif(n,0,1)
-  # par?metros del modelo de riesgo proporcional
+  # parámetros del modelo de riesgo proporcional
   beta1<-0.3
   beta2<-0.25
   # funcion de riesgo
@@ -30,7 +30,7 @@ gendata<-function(s,n=100,v=6,len=0.25,asist=T){
   alpha
   # tiempos primera visita
   t1=runif(n,0,alpha)
-  # censura a derecha resultante en la ?ltima visita asumiendo que siempre van
+  # censura a derecha resultante en la última visita asumiendo que siempre van
   # print(sum(T>(t1+4*len))/n)
   # visitas
   tvisitas<-matrix(0,ncol=v-2,nrow=n)
@@ -82,7 +82,7 @@ estVC<-function(i,vecinos=vecinos,dd=dd,rm=rm){
   vcn<-dd[vv,]
   tbvcn<-icfit(Surv(vcn$tl,vcn$tu,type='interval2')~1)
   plot(tbvcn,main=paste('i =',i),xlim=c(0,max(rm,ifelse(dd[i,6]==Inf,0,dd[i,6]),ifelse(tbvcn$intmap==Inf,0,tbvcn$intmap))));abline(v=dd[i,5:6],lwd=2);abline(v=rm,col='blue',lwd=2)
-  # imputaci?n a traves de NPMLE
+  # imputación a traves de NPMLE
   if(dd[i,6]==Inf){
     tmp1<-colMeans(tbvcn$intmap)[colMeans(tbvcn$intmap)<Inf]
     tmp2<-tmp1[tmp1>=dd[i,5] & tmp1<=rm]
